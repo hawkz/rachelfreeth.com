@@ -1,0 +1,16 @@
+[06-Sep-2022 08:18:25 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function _deprecated_file() in /home3/joind/public_html/rachelfreeth.com/wp-includes/customize/class-wp-customize-new-menu-control.php:11
+Stack trace:
+#0 {main}
+  thrown in /home3/joind/public_html/rachelfreeth.com/wp-includes/customize/class-wp-customize-new-menu-control.php on line 11
+[06-Sep-2022 08:18:27 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'WP_Customize_Control' not found in /home3/joind/public_html/rachelfreeth.com/wp-includes/customize/class-wp-customize-code-editor-control.php:17
+Stack trace:
+#0 {main}
+  thrown in /home3/joind/public_html/rachelfreeth.com/wp-includes/customize/class-wp-customize-code-editor-control.php on line 17
+[06-Sep-2022 08:20:47 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'WP_Customize_Control' not found in /home3/joind/public_html/rachelfreeth.com/wp-includes/customize/class-wp-customize-nav-menu-auto-add-control.php:17
+Stack trace:
+#0 {main}
+  thrown in /home3/joind/public_html/rachelfreeth.com/wp-includes/customize/class-wp-customize-nav-menu-auto-add-control.php on line 17
+[06-Sep-2022 08:22:39 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'WP_Customize_Control' not found in /home3/joind/public_html/rachelfreeth.com/wp-includes/customize/class-wp-customize-nav-menu-name-control.php:17
+Stack trace:
+#0 {main}
+  thrown in /home3/joind/public_html/rachelfreeth.com/wp-includes/customize/class-wp-customize-nav-menu-name-control.php on line 17
