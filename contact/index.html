@@ -634,23 +634,58 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 <article id="post-13" class="post-13 page type-page status-publish hentry">
 
 	<div class="entry-content">
-		<div class="wpforms-container wpforms-container-full wpforms-block wpforms-block-086f11e0-8a9f-436a-a004-b58ba3b4f594 wpforms-render-modern" id="wpforms-68500"><form id="wpforms-form-68500" class="wpforms-validate wpforms-form wpforms-ajax-form" data-formid="68500" method="post" enctype="multipart/form-data" action="index.html" data-token="57d88fc2ee4d60090ebfad0853e017be" data-token-time="1726510897"><noscript class="wpforms-error-noscript">Please enable JavaScript in your browser to complete this form.</noscript><div class="wpforms-hidden" id="wpforms-error-noscript">Please enable JavaScript in your browser to complete this form.</div><div class="wpforms-field-container"><div id="wpforms-68500-field_1-container" class="wpforms-field wpforms-field-name" data-field-id="1"><fieldset><legend class="wpforms-field-label">Name <span class="wpforms-required-label" aria-hidden="true">*</span></legend><div class="wpforms-field-row wpforms-field-medium"><div class="wpforms-field-row-block wpforms-first wpforms-one-half"><input type="text" id="wpforms-68500-field_1" class="wpforms-field-name-first wpforms-field-required" name="wpforms[fields][1][first]" aria-errormessage="wpforms-68500-field_1-error" required><label for="wpforms-68500-field_1" class="wpforms-field-sublabel after">First</label></div><div class="wpforms-field-row-block wpforms-one-half"><input type="text" id="wpforms-68500-field_1-last" class="wpforms-field-name-last wpforms-field-required" name="wpforms[fields][1][last]" aria-errormessage="wpforms-68500-field_1-last-error" required><label for="wpforms-68500-field_1-last" class="wpforms-field-sublabel after">Last</label></div></div></fieldset></div>		<div id="wpforms-68500-field_4-container"
-			class="wpforms-field wpforms-field-text"
-			data-field-type="text"
-			data-field-id="4"
-			>
-			<label class="wpforms-field-label" for="wpforms-68500-field_4" >want me Name</label>
-			<input type="text" id="wpforms-68500-field_4" class="wpforms-field-medium" name="wpforms[fields][4]" >
-		</div>
-		<div id="wpforms-68500-field_2-container" class="wpforms-field wpforms-field-email" data-field-id="2"><label class="wpforms-field-label" for="wpforms-68500-field_2">Email <span class="wpforms-required-label" aria-hidden="true">*</span></label><input type="email" id="wpforms-68500-field_2" class="wpforms-field-medium wpforms-field-required" name="wpforms[fields][2]" spellcheck="false" aria-errormessage="wpforms-68500-field_2-error" required></div><div id="wpforms-68500-field_3-container" class="wpforms-field wpforms-field-textarea" data-field-id="3"><label class="wpforms-field-label" for="wpforms-68500-field_3">Tell me why you want to contact me</label><textarea id="wpforms-68500-field_3" class="wpforms-field-medium" name="wpforms[fields][3]" aria-errormessage="wpforms-68500-field_3-error" ></textarea></div><script>
-				( function() {
-					const style = document.createElement( 'style' );
-
-					style.appendChild( document.createTextNode( '#wpforms-68500-field_4-container { position: absolute !important; overflow: hidden !important; display: inline !important; height: 1px !important; width: 1px !important; z-index: -1000 !important; padding: 0 !important; input { visibility: hidden; } }' ) );
-					document.head.appendChild( style );
-					document.currentScript?.remove();
-				} )();
-			</script></div><!-- .wpforms-field-container --><div class="wpforms-submit-container" ><input type="hidden" name="wpforms[id]" value="68500"><input type="hidden" name="page_title" value="Contact"><input type="hidden" name="page_url" value="https://rachelfreeth.com/contact/"><input type="hidden" name="page_id" value="13"><input type="hidden" name="wpforms[post_id]" value="13"><button type="submit" name="wpforms[submit]" id="wpforms-submit-68500" class="wpforms-submit" data-alt-text="Sending..." data-submit-text="Submit" aria-live="assertive" value="wpforms-submit">Submit</button><img decoding="async" src="../wp-content/plugins/wpforms-lite/assets/images/submit-spin.svg" class="wpforms-submit-spinner" style="display: none;" width="26" height="26" alt="Loading"></div></form></div>  <!-- .wpforms-container -->			</div><!-- .entry-content -->
+		<div class="wpforms-container wpforms-container-full wpforms-block wpforms-block-086f11e0-8a9f-436a-a004-b58ba3b4f594 wpforms-render-modern" id="wpforms-68500">
+			
+			<form id="my-form" action="https://formspree.io/f/xldrqgae" method="POST">
+				<p><label>Name:</label>
+				<input type="text" name="name" />
+				</p><p>
+				<label>Email:</label>
+				<input type="email" name="email" required />
+				</p><p>
+				<label>Tell me why you want to contact me:</label>
+				<textarea name="message"></textarea>
+				</p><p>
+				<button id="my-form-button">Submit</button>
+				</p>
+				<p id="my-form-status"></p>
+			  </form>
+			  
+			  <!-- Place this script at the end of the body tag -->
+			  <script>
+				var form = document.getElementById("my-form");
+				
+				async function handleSubmit(event) {
+				  event.preventDefault();
+				  var status = document.getElementById("my-form-status");
+				  var data = new FormData(event.target);
+				  fetch(event.target.action, {
+					method: form.method,
+					body: data,
+					headers: {
+						'Accept': 'application/json'
+					}
+				  }).then(response => {
+					if (response.ok) {
+					  status.innerHTML = "Thanks for your submission!";
+					  form.reset()
+					} else {
+					  response.json().then(data => {
+						if (Object.hasOwn(data, 'errors')) {
+						  status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+						} else {
+						  status.innerHTML = "Oops! There was a problem submitting your form"
+						}
+					  })
+					}
+				  }).catch(error => {
+					status.innerHTML = "Oops! There was a problem submitting your form"
+				  });
+				}
+				form.addEventListener("submit", handleSubmit)
+			  </script>	
+		
+		</div>  <!-- .wpforms-container -->			</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
 			</footer><!-- .entry-footer -->
